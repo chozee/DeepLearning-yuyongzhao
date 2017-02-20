@@ -28,6 +28,14 @@ def has_punctuation(string):
                 0xff00<=ord(ch)<=0xffef
                 for ch in string
               )
+def is_bi_word(bi_word):
+    """
+    仅限于汉字二元词组的判断
+
+    :param bi_word:
+    :return:
+    """
+    return (not has_punctuation(bi_word)) and len(bi_word) == 6 # 判断长度为6表示判断两个汉字的词组
 
 def twoTupleWordCnt(text_list, max_count):
     """
@@ -39,8 +47,10 @@ def twoTupleWordCnt(text_list, max_count):
 
     two_tuple_list = []
     for i in range(0, len(text_list)):
-        if (not has_punctuation(text_list[i])) and len(text_list[i]) == 6 and (not has_punctuation(text_list[i+1])) and len(text_list[i+1]) == 6:
-            two_tuple_list.append("_".join([text_list[i], text_list[i+1]]))
+        cur_ele = text_list[i]
+        next_ele = text_list[i+1]
+        if is_bi_word(cur_ele) and is_bi_word(next_ele):
+            two_tuple_list.append("_".join([cur_ele, next_ele]))
     c = Counter(two_tuple_list)
     return c.most_common(max_count)
 
