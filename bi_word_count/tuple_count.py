@@ -46,7 +46,7 @@ def twoTupleWordCnt(text_list, max_count):
     """
 
     two_tuple_list = []
-    for i in range(0, len(text_list)):
+    for i in range(0, len(text_list) - 1):
         cur_ele = text_list[i]
         next_ele = text_list[i+1]
         if is_bi_word(cur_ele) and is_bi_word(next_ele):
