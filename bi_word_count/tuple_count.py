@@ -54,29 +54,6 @@ def twoTupleWordCnt(text_list, max_count):
     c = Counter(two_tuple_list)
     return c.most_common(max_count)
 
-def sortedByValueDesc(your_dict):
-    """
-    对dict类型，按照vlaue进行排除
-    :param your_dict: dict类型
-    :return: 排序后的dict
-    """
-    return sorted(your_dict.items(), lambda x, y: cmp(x[1], y[1]), reverse=True)
-
-def countWord(text):
-    """
-    统计词频
-    :param text: 输入内容
-    :return: (单词,计数) 的dict
-    """
-    words_dict = {}
-    for word in text:
-        if len(word.strip()) == 6:
-            if word in words_dict:
-                words_dict[word] +=1
-            else:
-                words_dict[word] = 1
-    return words_dict
-
 def two_tuple_count():
     file_name = "word"
     text_list = read_file(file_name)
